@@ -6,27 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body{
-      margin:0; font-family:Arial, Helvetica, sans-serif;
-      background:#1f1f1f; color:#eee;
+      margin:0;font-family:Arial,Helvetica,sans-serif;
+      background:#1f1f1f;color:#eee;text-align:center;
     }
-    header{
-      text-align:center; padding:32px 16px;
-    }
-    h1{ margin:0; font-size:40px; font-weight:800; }
-    p{ opacity:.8; }
+    header{padding:32px 16px;}
+    h1{margin:0;font-size:40px;font-weight:800;}
     .box{
-      max-width:720px; margin:40px auto; padding:24px;
-      border:1px solid #333; border-radius:12px; text-align:center;
+      max-width:720px;margin:40px auto;padding:24px;
+      border:1px solid #333;border-radius:12px;
+      background:#252525;
     }
     .btn{
-      display:inline-block; margin-top:16px; padding:12px 20px;
-      background:#4a90e2; color:#fff; text-decoration:none;
-      border-radius:8px; font-weight:700;
+      display:inline-block;margin:10px;padding:12px 20px;
+      background:#4a90e2;color:#fff;border:none;
+      border-radius:8px;font-weight:700;cursor:pointer;
+      transition:0.3s;
+    }
+    .btn:hover{background:#357ac8;}
+    #popup{
+      display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.7);color:#fff;font-size:20px;
+    }
+    #popupContent{
+      background:#2a2a2a;margin:120px auto;padding:20px;border-radius:10px;
+      width:300px;
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>OHMMedia</h1>
     <p>Hızlı ve güvenli dosya paylaşımı</p>
@@ -36,31 +43,32 @@
     <p><strong>www.ohmcloud.net</strong></p>
     <p>Coming Soon</p>
     <button class="btn" id="openPopup">Participations</button>
+    <button class="btn" id="fartBtn">Osur</button>
+    <audio id="fartSound" src="assets/sounds/fart.mp3" preload="auto"></audio>
   </div>
-  <div id="popup" style="
-  display:none;
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.7);color:#fff;text-align:center;
-  padding-top:150px;font-size:20px;">
-  <p>Katılımcılar: Osman, Ahmet, Melisa, ÇoÇuK</p>
-  <button onclick="document.getElementById('popup').style.display='none'">Kapat</button>
-</div>
-  <button class="btn" id="fartBtn">Osur</button>
-<audio id="fartSound" src="fart.mp3" preload="auto"></audio>
+
+  <div id="popup">
+    <div id="popupContent">
+      <p><b>Katılımcılar</b></p>
+      <ul style="list-style:none;padding:0;">
+        <li>Osman — Yönetici</li>
+        <li>Ahmet — Yönetici 2</li>
+        <li>Melisa — Üye</li>
+        <li>ÇoÇuK — Üye</li>
+      </ul>
+      <button class="btn" id="closePopup">Kapat</button>
+    </div>
+  </div>
 
   <script>
-  document.getElementById("openPopup").addEventListener("click", function(e){
-    e.preventDefault(); // redirecti öldürür
-    document.getElementById("popup").style.display = "block";
-  });
-  document.getElementById("fartBtn").addEventListener("click", function(){
-    const s = document.getElementById("fartSound");
-    s.currentTime = 0;
-    s.play();
-  });
-</script>
+    const popup=document.getElementById("popup");
+    document.getElementById("openPopup").onclick=()=>popup.style.display="block";
+    document.getElementById("closePopup").onclick=()=>popup.style.display="none";
 
-</script>
-
+    document.getElementById("fartBtn").addEventListener("click",()=>{
+      const s=document.getElementById("fartSound");
+      s.currentTime=0;s.play();
+    });
+  </script>
 </body>
 </html>
