@@ -35,8 +35,14 @@
   <div class="box">
     <p><strong>www.ohmcloud.net</strong></p>
     <p>Coming Soon</p>
-    <a class="btn" href="#">Participations</a>
+    <button class="btn" id="openPopup">Participations</button>
   </div>
+  <script>
+  document.getElementById("openPopup").addEventListener("click", function(e){
+    e.preventDefault(); // redirecti öldürür
+    document.getElementById("popup").style.display = "block";
+  });
+</script>
 
 </body>
 </html>
