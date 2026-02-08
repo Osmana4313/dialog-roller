@@ -45,12 +45,21 @@
   <p>Katılımcılar: Osman, Ahmet, Melisa, ÇoÇuK</p>
   <button onclick="document.getElementById('popup').style.display='none'">Kapat</button>
 </div>
+  <button class="btn" id="fartBtn">Osur</button>
+<audio id="fartSound" src="fart.mp3" preload="auto"></audio>
 
   <script>
   document.getElementById("openPopup").addEventListener("click", function(e){
     e.preventDefault(); // redirecti öldürür
     document.getElementById("popup").style.display = "block";
   });
+  document.getElementById("fartBtn").addEventListener("click", function(){
+    const s = document.getElementById("fartSound");
+    s.currentTime = 0;
+    s.play();
+  });
+</script>
+
 </script>
 
 </body>
